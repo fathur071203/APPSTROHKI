@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/video_back"
+        android:icon="@drawable/backvid"
+        android:title="BackVid" />
+    <item
+        android:id="@+id/placeholder"
+        android:title=""/>
+    <item
+        android:id="@+id/video_next"
+        android:icon="@drawable/nextvid"
+        android:title="NextVid" />
+
+</menu>
