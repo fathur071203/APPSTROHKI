@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+
+    tools:context=".DetailProgramActivity">
+
+    <ImageView
+        android:id="@+id/cancelImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cancelbutton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/detailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Detail"
+        android:textColor="@color/purple_700"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cancelImageView" />
+
+    <TextView
+        android:id="@+id/jenisGerakanTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple_700"
+        android:text="Jenis Program"
+        android:layout_marginTop="55dp"
+        android:layout_marginStart="10dp"
+        android:alpha="0.7"
+        android:textStyle="bold"
+        android:drawableStart="@drawable/jenisprogram"
+        android:drawablePadding="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/detailTextView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:text="Latihan tubuh bagian atas"
+        app:layout_constraintTop_toBottomOf="@id/jenisGerakanTextView"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/gerakanTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple_700"
+        android:text="Gerakan"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:alpha="0.7"
+        android:textStyle="bold"
+        android:drawableStart="@drawable/listgerakan"
+        android:drawablePadding="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/moveDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:text="Latihan tubuh bagian atas"
+        app:layout_constraintTop_toBottomOf="@id/gerakanTextView"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/estimasiWaktuTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:alpha="0.7"
+        android:drawableStart="@drawable/waktu"
+        android:drawablePadding="8dp"
+        android:text="Estimasi Waktu"
+        android:textColor="@color/purple_700"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moveDescription" />
+
+    <TextView
+        android:id="@+id/txtEstimation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20 menit"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/estimasiWaktuTextView"/>
+
+    <Button
+        android:id="@+id/btnProgram"
+        android:layout_width="352dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/button_program"
+        android:text="Mulai Program"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/estimasiWaktuTextView"
+        app:layout_constraintVertical_bias="0.964" />
+</androidx.constraintlayout.widget.ConstraintLayout>

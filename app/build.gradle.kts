@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id ("kotlin-kapt")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -39,6 +41,7 @@ android {
         viewBinding = true
         buildConfig = true
     }
+    buildToolsVersion = "33.0.1"
 }
 
 dependencies {
@@ -51,6 +54,9 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
+    implementation ("androidx.activity:activity-ktx:1.4.1")
+    implementation ("androidx.fragment:fragment:1.4.0")
 
     implementation ("com.google.android.material:material:1.3.0-alpha03")
 
@@ -74,4 +80,8 @@ dependencies {
 
     // CameraX View class
     implementation ("androidx.camera:camera-view:1.3.0")
+    implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+
+
 }
