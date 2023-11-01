@@ -29,7 +29,6 @@ class LoginActivity : AppCompatActivity() {
         val viewModelFactory : ViewModelFactory = ViewModelFactory.getInstance(this)
         val loginViewModel : LoginViewModel by viewModels {
             viewModelFactory
-
         }
 
         binding.btnLogin.setOnClickListener {

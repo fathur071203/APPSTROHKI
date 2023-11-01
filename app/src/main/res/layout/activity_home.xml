@@ -89,7 +89,6 @@
                     android:background="@drawable/frame_6" />
 
             </LinearLayout>
-
             <Button
                 android:id="@+id/btnProgram"
                 android:layout_width="310dp"
