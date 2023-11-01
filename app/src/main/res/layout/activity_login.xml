@@ -128,14 +128,7 @@
                 android:layout_height="20dp"
                 android:text="Silahkan Daftar"
                 android:layout_gravity="center"
-                android:alpha="0.7"
-                />
-
-
-
-
+                android:alpha="0.7" />
         </LinearLayout>
-
-
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
