@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
         val loginViewModel : LoginViewModel by viewModels {
             viewModelFactory
         }
+
         binding.btnLogin.setOnClickListener {
             loginViewModel.postLogin(
                 binding.EmailText.text.toString(),

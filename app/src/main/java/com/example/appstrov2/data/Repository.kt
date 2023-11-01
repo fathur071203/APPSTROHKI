@@ -6,6 +6,8 @@ import androidx.lifecycle.liveData
 import com.example.appstrov2.response.Login
 import com.example.appstrov2.response.Register
 import com.example.appstrov2.retrofit.ApiService
+
+
 class Repository(
     private val apiService: ApiService
 ) {
@@ -17,6 +19,7 @@ class Repository(
         }
         catch (e: Exception){
             emit(Result.Error(e.message.toString()))
+
         }
     }
 
