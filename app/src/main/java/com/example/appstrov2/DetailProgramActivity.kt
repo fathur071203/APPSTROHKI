@@ -15,7 +15,7 @@ class DetailProgramActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnProgram.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
+            startActivity(Intent(this, VideoProgramActivity::class.java))
         }
     }
 }

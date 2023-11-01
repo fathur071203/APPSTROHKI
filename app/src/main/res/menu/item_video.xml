@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/video_back"
-        android:icon="@drawable/backvid"
+        android:icon="@drawable/skip_previous"
         android:title="BackVid" />
     <item
         android:id="@+id/placeholder"

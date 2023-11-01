@@ -83,5 +83,13 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
 
+    //media player
+    implementation("androidx.media3:media3-exoplayer:1.1.0")
+    implementation("androidx.media3:media3-ui:1.1.0")
+    implementation("androidx.media3:media3-session:1.1.0")
+
+//    media
+    implementation ("com.google.android.exoplayer:exoplayer:2.18.1")
+
 
 }

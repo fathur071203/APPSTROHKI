@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:argType="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:keepScreenOn="true">
+
+    <com.google.android.exoplayer2.ui.StyledPlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/typeMove"
+        app:show_subtitle_button="true"
+        argType:fastforward_increment="15000"
+        argType:resize_mode="fixed_width"
+        argType:rewind_increment="15000"
+        argType:show_buffering="when_playing"
+        argType:show_fastforward_button="true"
+        argType:show_next_button="false"
+        argType:show_previous_button="false"
+        argType:show_rewind_button="true"
+        argType:show_subtitle_button="true"
+        argType:use_artwork="true"
+        argType:use_controller="true"
+        argType:use_sensor_rotation="true">
+    </com.google.android.exoplayer2.ui.StyledPlayerView>
+
+    <TextView
+        android:id="@+id/typeMove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple_700"
+        android:text="Nama Gerakan"
+        android:layout_marginTop="55dp"
+        android:layout_marginStart="10dp"
+        android:alpha="0.7"
+        android:textStyle="bold"
+        android:drawableStart="@drawable/jenisprogram"
+        android:drawablePadding="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/playerView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:text="Latihan tubuh bagian atas"
+        app:layout_constraintTop_toBottomOf="@id/typeMove"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/gerakanTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple_700"
+        android:text="Gerakan"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:alpha="0.7"
+        android:textStyle="bold"
+        android:drawableStart="@drawable/listgerakan"
+        android:drawablePadding="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/moveDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:text="Latihan tubuh bagian atas"
+        app:layout_constraintTop_toBottomOf="@id/gerakanTextView"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fabCradleMargin="15dp"
+            app:fabCradleVerticalOffset="10dp"
+            app:fabCradleRoundedCornerRadius="20dp"
+            android:layout_gravity="bottom">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_transparant"
+                app:menu="@menu/item_video" />
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="fab"
+            android:src="@drawable/video"
+            app:layout_anchor="@id/bottomAppBar" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
