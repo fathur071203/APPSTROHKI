@@ -16,7 +16,7 @@ class SplashScreen : AppCompatActivity() {
         // Buat Handler untuk menunda tindakan selama beberapa detik
         Handler().postDelayed({
             // Arahkan ke aktivitas berikutnya setelah jeda waktu selesai
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, OnBoarding::class.java)
             startActivity(intent)
             finish() // Tutup aktivitas SplashScreen agar tidak bisa kembali lagi
         }, SPLASH_TIME_OUT.toLong())

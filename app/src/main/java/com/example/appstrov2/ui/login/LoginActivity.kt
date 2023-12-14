@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.appstrov2.ViewModelFactory
 import com.example.appstrov2.databinding.ActivityLoginBinding
 import androidx.activity.viewModels
+import com.example.appstrov2.ProfileActivity
 import com.example.appstrov2.ui.HomeActivity
 import com.example.appstrov2.ui.register.RegisterActivity
 import com.example.appstrov2.data.Result
@@ -46,7 +47,9 @@ class LoginActivity : AppCompatActivity() {
                             Toast.makeText(this, "Login ${it.data.message}", Toast.LENGTH_SHORT).show()
                             val saveResponse = it.data
                             tokenSave(saveResponse.loginResult.token)
-                            startActivity(Intent(this, HomeActivity::class.java))
+                            val intent = Intent(this@LoginActivity, ProfileActivity::class.java)
+                            intent.putExtra(EX, saveResponse.loginResult.token)
+                            startActivity(intent)
                         }
                         is Result.Error -> {
                             binding.progressBar.visibility = View.GONE

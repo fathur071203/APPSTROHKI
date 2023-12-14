@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.appstrov2.ui.HomeActivity
+import com.example.appstrov2.ui.login.LoginActivity
 
 
 class OnBoarding : AppCompatActivity() {
@@ -30,7 +31,7 @@ class OnBoarding : AppCompatActivity() {
             if (getitem(0) < 5) {  // Menjaga agar tidak mencoba mengakses slide ke-5 (indeks 4)
                 mSLideViewPager?.setCurrentItem(getitem(1), true)
             } else {
-                val i = Intent(this@OnBoarding, HomeActivity::class.java)
+                val i = Intent(this@OnBoarding, LoginActivity::class.java)
                 startActivity(i)
                 finish()
             }
@@ -38,7 +39,7 @@ class OnBoarding : AppCompatActivity() {
 
 
         skipbtn?.setOnClickListener(View.OnClickListener {
-            val i = Intent(this@OnBoarding, HomeActivity::class.java)
+            val i = Intent(this@OnBoarding, LoginActivity::class.java)
             startActivity(i)
             finish()
         })

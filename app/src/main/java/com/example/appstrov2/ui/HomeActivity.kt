@@ -67,6 +67,7 @@ class HomeActivity : AppCompatActivity() {
         dialog.setContentView(R.layout.activity_alert_dialog)
         dialog.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.WHITE))
 
+
         val tvMessage : TextView = dialog.findViewById(R.id.tv_alert_message)
         val yes : TextView = dialog.findViewById(R.id.confirm_yes_logout_button)
         val no : TextView = dialog.findViewById(R.id.confirm_no_logout_button)

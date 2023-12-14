@@ -22,4 +22,19 @@
     //indicator color
     <color name="inactive">#C4C4C4</color>
     <color name="active">#50C2C9</color>
+
+
+<!--    Color compose -->
+
+    <color name="yellow_CD1">#FFECD1</color>
+    <color name="yellow">#FFECD1</color>
+    <color name="brown">#37392E</color>
+    <color name="orange">#FE5F00</color>
+    <color name="cream">#FFECD1</color>
+    <color name="Purple">#4D5DE5</color>
+    <color name="Blue_4B">#20276A</color>
+    <color name="LightGray">#757480</color>
+    <color name="Abu">#EBEBF9</color>
+    <color name="Black">#000000</color>
+    <color name="pink">#EBEBF9</color>
 </resources>

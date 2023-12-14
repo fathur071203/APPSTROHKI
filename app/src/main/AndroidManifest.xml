@@ -46,6 +46,12 @@
         <activity
             android:name=".ChatActivity"
             android:exported="false" />
+        <activity android:name=".SplashScreen"
+            android:exported="false"/>
+
+        <activity android:name=".OnBoarding"
+            android:exported="false" />
+
         <activity
             android:name=".ui.HomeActivity"
             android:exported="true">
@@ -55,6 +61,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
 
     </application>
 
