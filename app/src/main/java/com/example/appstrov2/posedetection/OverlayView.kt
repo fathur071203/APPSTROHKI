@@ -25,6 +25,7 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
     private var imageHeight: Int = 1
 
     private var databaseReference: DatabaseReference
+    private var movementCategory: String = ""
 
     init {
         initPaints()
@@ -66,7 +67,6 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
                         linePaint
                     )
 
-                    // Calculate and display angles for right and left hands, pinggul, and kaki
                     if (it.start() in 11..15 && it.end() in 13..17) {
                         val angleDegrees = calculateAngle(
                             startLandmark.x(),
@@ -74,12 +74,12 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
                             poseLandmarkerResult.landmarks().get(0).get(it.end()).x(),
                             poseLandmarkerResult.landmarks().get(0).get(it.end()).y()
                         )
-                        val  angleName = when (it.end()) {
+                        val angleName = when (it.end()) {
                             13 -> "Sudut Bahu Kanan"
                             14 -> "Sudut Bahu Kiri"
                             15 -> "Sudut Tangan Kanan"
                             16 -> "Sudut Tangan Kiri"
-                            else -> "unow2"
+                            else -> ""
                         }
                         canvas.drawText(
                             "$angleName sudut: ${angleDegrees}°",
@@ -87,14 +87,9 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
                             startLandmark.y() * imageHeight * scaleFactor,
                             pointPaint
                         )
-
-
-
-                    } else if (it.start() in 23..27 && it.end() in 24..28 && it.end() != 25)  {
-                        // Calculate angle for pinggul or kaki
+                    } else if (it.start() in 23..27 && it.end() in 24..28 && it.end() != 25) {
                         val angleDegrees = calculateAngle(
                             startLandmark.x(),
-                            // ... (gantilah titik titik dengan indeks yang sesuai)
                             startLandmark.y(),
                             poseLandmarkerResult.landmarks().get(0).get(it.end()).x(),
                             poseLandmarkerResult.landmarks().get(0).get(it.end()).y()
@@ -102,10 +97,9 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
                         val angleName = when (it.end()) {
                             24 -> "Sudut Pinggul Kanan"
                             26 -> "Sudut Pinggul Kiri"
-                            25 -> "ini 25"
                             27 -> "Sudut Lutut Kanan"
                             28 -> "Sudut Lutut Kiri"
-                            else -> " "
+                            else -> ""
                         }
                         canvas.drawText(
                             "$angleName sudut: ${angleDegrees}°",
@@ -113,10 +107,7 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
                             startLandmark.y() * imageHeight * scaleFactor,
                             pointPaint
                         )
-
-
                     } else if ((it.start() == 32 && it.end() == 33) || (it.start() == 29 && it.end() == 30)) {
-                        // Calculate angle for kaki kanan or kaki kiri
                         val angleDegrees = calculateAngle(
                             startLandmark.x(),
                             startLandmark.y(),
@@ -129,12 +120,103 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
                             startLandmark.y() * imageHeight * scaleFactor,
                             pointPaint
                         )
-
-                        // Simpan sudut ke dalam database
-
                     }
-
                 }
+                val sudutTanganKanan = calculateAngle(
+                    poseLandmarkerResult.landmarks().get(0).get(15).x(),
+                    poseLandmarkerResult.landmarks().get(0).get(15).y(),
+                    poseLandmarkerResult.landmarks().get(0).get(16).x(),
+                    poseLandmarkerResult.landmarks().get(0).get(16).y()
+                )
+
+                val sudutPinggulKanan = calculateAngle(
+                    poseLandmarkerResult.landmarks().get(0).get(24).x(),
+                    poseLandmarkerResult.landmarks().get(0).get(24).y(),
+                    poseLandmarkerResult.landmarks().get(0).get(26).x(),
+                    poseLandmarkerResult.landmarks().get(0).get(26).y()
+                )
+                val sudutBahuKanan = calculateAngle(
+                    poseLandmarkerResult.landmarks().get(0).get(24).x(),
+                    poseLandmarkerResult.landmarks().get(0).get(24).y(),
+                    poseLandmarkerResult.landmarks().get(0).get(26).x(),
+                    poseLandmarkerResult.landmarks().get(0).get(26).y()
+                )
+
+                // Add similar calculations for left knee
+                val sudutLututKanan = calculateAngle(
+                    poseLandmarkerResult.landmarks().get(0).get(27).x(),
+                    poseLandmarkerResult.landmarks().get(0).get(27).y(),
+                    poseLandmarkerResult.landmarks().get(0).get(28).x(),
+                    poseLandmarkerResult.landmarks().get(0).get(28).y()
+                )
+
+                val sudutLututKiri = calculateAngle(
+                    poseLandmarkerResult.landmarks().get(0).get(23).x(),
+                    poseLandmarkerResult.landmarks().get(0).get(23).y(),
+                    poseLandmarkerResult.landmarks().get(0).get(24).x(),
+                    poseLandmarkerResult.landmarks().get(0).get(24).y()
+                )
+
+
+                val sudut = if (sudutLututKanan >= 0f && sudutLututKanan <= 90f) {
+                    "Gerakan Sempurna"
+                } else if (sudutLututKanan > 120f && sudutLututKanan <= 240f) {
+                    "Gerakan Tidak Sempurna"
+                } else {
+                    "Gerakan Tidak Sempurna"
+                }
+
+
+                val textPaint = Paint()
+                textPaint.textSize = 40f
+                textPaint.textAlign = Paint.Align.CENTER
+                val centerX = width / 2f
+                val centerY = height / 3f
+
+                // Berdasarkan sudut, tentukan warna teks
+                textPaint.color = when (sudut) {
+                    "Gerakan Sempurna" -> Color.GREEN
+                    "Gerakan Tidak Sempurna" -> Color.YELLOW
+                    "Tidak Bergerak" -> Color.RED
+                    else -> Color.WHITE
+                }
+
+                canvas.drawText(sudut, centerX, centerY, textPaint)
+
+
+//                // Tampilkan kategori gerakan
+//                when (movementCategory) {
+//                    "gerakansempurna" -> {
+//                        val textPaint = Paint()
+//                        textPaint.color = Color.WHITE
+//                        textPaint.textSize = 80f
+//                        textPaint.textAlign = Paint.Align.CENTER
+//                        val centerX = width / 2f
+//                        val centerY = height / 2f
+//                        canvas.drawText("Gerakan Sempurna", centerX, centerY, textPaint)
+//                    }
+//                    "tidaksempurna" -> {
+//                        val textPaint = Paint()
+//                        textPaint.color = Color.WHITE
+//                        textPaint.textSize = 80f
+//                        textPaint.textAlign = Paint.Align.CENTER
+//                        val centerX = width / 2f
+//                        val centerY = height / 2f
+//                        canvas.drawText("Gerakan Tidak Sempurna", centerX, centerY, textPaint)
+//                    }
+//                    "tidakbergerak" -> {
+//                        val textPaint = Paint()
+//                        textPaint.color = Color.WHITE
+//                        textPaint.textSize = 80f
+//                        textPaint.textAlign = Paint.Align.CENTER
+//                        val centerX = width / 2f
+//                        val centerY = height / 2f
+//                        canvas.drawText("Tidak Bergerak", centerX, centerY, textPaint)
+//                    }
+//                    else -> {
+//                        // Tidak ada kategori yang cocok, tidak ada teks ditampilkan
+//                    }
+//                }
             }
         }
     }
@@ -155,72 +237,24 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         runningMode: RunningMode = RunningMode.IMAGE
     ) {
         results = poseLandmarkerResults
-
         this.imageHeight = imageHeight
         this.imageWidth = imageWidth
-
         scaleFactor = when (runningMode) {
             RunningMode.IMAGE,
             RunningMode.VIDEO -> {
                 kotlin.math.min(width * 1f / imageWidth, height * 1f / imageHeight)
             }
-
             RunningMode.LIVE_STREAM -> {
                 kotlin.math.max(width * 1f / imageWidth, height * 1f / imageHeight)
             }
         }
-
-        // Save results to Firebase Realtime Database
-        saveResultsToDatabase(poseLandmarkerResults)
-
         invalidate()
     }
 
-    private var resultCounter: Int = 1
-    private val counterLock = Object()
-
-
-    private fun saveResultsToDatabase(poseLandmarkerResults: PoseLandmarkerResult) {
-        var resultId: String
-
-        synchronized(counterLock) {
-            resultId = "${resultCounter++}"
-        }
-
-        val resultReference = databaseReference.child(resultId)
-
-        for (landmarkIndex in poseLandmarkerResults.landmarks().indices) {
-            val landmark = poseLandmarkerResults.landmarks()[landmarkIndex]
-
-            for (anglePair in PoseLandmarker.POSE_LANDMARKS) {
-                if (anglePair!!.end() in setOf(13, 14, 15, 16, 24, 26, 27, 28)) {
-                    val startLandmark = landmark[anglePair.start()]
-                    val endLandmark = landmark[anglePair.end()]
-
-                    val angleDegrees = calculateAngle(
-                        startLandmark.x(),
-                        startLandmark.y(),
-                        endLandmark.x(),
-                        endLandmark.y()
-                    )
-
-                    val angleName = when (anglePair.end()) {
-                        13 -> "Sudut Bahu Kanan"
-                        14 -> "Sudut Bahu Kiri"
-                        15 -> "Sudut Tangan Kanan"
-                        16 -> "Sudut Tangan Kiri"
-                        24 -> "Sudut Pinggul Kanan"
-                        26 -> "Sudut Pinggul Kiri"
-                        27 -> "Sudut Lutut Kanan"
-                        28 -> "Sudut Lutut Kiri"
-                        else -> continue
-                    }
-
-                    resultReference.child(angleName).setValue(angleDegrees)
-                }
-            }
-        }
-
+    // Fungsi untuk mengatur kategori gerakan
+    fun setMovementCategory(category: String) {
+        movementCategory = category
+        invalidate()
     }
 
     companion object {
