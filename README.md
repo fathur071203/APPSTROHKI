@@ -1,8 +1,6 @@
 # APPSTRO: Aplikasi Rehabilitasi Pasien Pasca Stroke
 
-**APPSTRO** adalah aplikasi berbasis teknologi kecerdasan buatan dan pengolahan citra yang dirancang untuk membantu pasien pasca stroke dalam menjalani proses rehabilitasi. Aplikasi ini memungkinkan pasien untuk melakukan rehabilitasi di rumah dengan kualitas yang sebanding dengan fasilitas kesehatan umum. Dikembangkan menggunakan **MediaPipe Pose Detection**, POSTRO mampu mendeteksi gerakan rehabilitasi dan menilai kualitas gerakan yang dilakukan oleh pasien.  
-
-Proyek ini dikembangkan sebagai bagian dari **Program Pendanaan PKM-KC 2023**.
+**APPSTRO** adalah aplikasi berbasis teknologi kecerdasan buatan dan pengolahan citra yang dirancang untuk membantu pasien pasca stroke dalam menjalani proses rehabilitasi. Aplikasi ini memungkinkan pasien untuk melakukan rehabilitasi di rumah dengan kualitas yang sebanding dengan fasilitas kesehatan umum. Dikembangkan menggunakan **MediaPipe Pose Detection**, APPSTRO mampu mendeteksi gerakan rehabilitasi dan menilai kualitas gerakan yang dilakukan oleh pasien.  
 
 ## 🎯 Fitur Utama
 - **Deteksi Gerakan Rehabilitasi**: Menggunakan teknologi MediaPipe untuk mendeteksi gerakan pasien secara real-time.  
@@ -15,6 +13,5 @@ Proyek ini dikembangkan sebagai bagian dari **Program Pendanaan PKM-KC 2023**.
 
 ## 🛠️ Teknologi yang Digunakan
 - **MediaPipe Pose Detection**: Untuk mendeteksi pose dan gerakan pasien.
-- **Python**: Bahasa pemrograman utama untuk pengembangan aplikasi.
+- **Kotlin**: Bahasa pemrograman utama untuk pengembangan aplikasi.
 - **Sistem Pakar Rule-Based**: Untuk memberikan penilaian gerakan rehabilitasi berdasarkan aturan yang telah ditentukan.
-- **Framework Pendukung**: Teknologi lain yang mendukung pengembangan aplikasi ini.
